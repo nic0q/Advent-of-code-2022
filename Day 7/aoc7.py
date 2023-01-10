@@ -1,7 +1,7 @@
 f = open("aoc7.txt", "r")
 lines = f.readlines()
 f.close()
-lines = list(map (lambda line : line.replace("\n", ""), lines))
+lines = list(map(lambda line : line.replace("\n", ""), lines))
 
 TOTAL = 70000000
 UNUSED = 30000000
@@ -37,10 +37,11 @@ def size(li):
 print(size(explore(lines)))
 
 # AOC Part 2
-def to_be_deleted(li):
+
 # i: array of disks
 # o: smallest directory for freeup space
+def to_be_deleted(li):
   required = UNUSED - (TOTAL - li[0])
-  return min(list(filter ( lambda s : s > required, li)))
+  return min(list(filter(lambda s : s > required, li)))
 
-print(to_be_deleted(explore (lines)))
+print(to_be_deleted(explore(lines)))
