@@ -15,18 +15,17 @@ def add_size(arr, index, size):
 # i: Console commands
 # o: array of disks
 def explore(l):
-  li = [0]
+  li = [0] # "/" root directory
   index = 0
-  for i in range(len(l)):
-    c = l[i].split(" ")
-    if c[1] == "cd":
-      if c[2] == "..":
-        index -= 1
-      elif c[2] != "/":
-        index += 1
-        li.insert(index, 0)
-    elif c[0] != "dir" and c[0] != "$":
+  for i in l:
+    c = i.split(" ")
+    if i == "$ cd ..":
+      index -= 1
+    elif c[0] != "$" and c[0] != "dir":
       add_size(li, index, c[0])
+    elif c[1] == "cd":
+      index += 1
+      li.insert(index, 0)      
   return li
 
 # AOC Part 1
